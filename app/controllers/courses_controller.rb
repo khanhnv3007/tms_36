@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :find_course, only: :show
 
   def show
-    @subjects = @course.subjects
+    @user_subjects = current_user.user_subjects
   end
 
   private

@@ -106,6 +106,8 @@ en:
     start_date: "Start date: "
     end_date: "End date: "
     status: "Status: "
+    finish: "Finish this subject!"
+    finished: "finished!"
   courses:
     name: "Course Name"
     started: "Started"

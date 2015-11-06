@@ -1,0 +1,31 @@
+<h3>
+  <%= @user_subject.subject.name %>
+  <% if @user_subject.finished? %>
+    <%= render "user_subjects/finished" %>
+  <% else %>
+    <span id="user-subject-<%= @user_subject.subject.id %>">
+      <%= link_to t("subjects.finish"),
+        user_user_subject_path(current_user.id, @user_subject.subject.id), method: :patch,
+        remote: true %>
+    </span>
+  <% end %>
+</h3>
+<h2><%= t "subjects.tasks" %></h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t "subjects.name" %></th>
+      <th><%= t "subjects.description" %></th>
+      <th><%= t "subjects.start_date" %></th>
+      <th><%= t "subjects.end_date" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @user_tasks %>
+  </tbody>
+</table>
+<hr/>
+<h2><%= t "instructions" %></h2>
+<p class="container-fluid">
+  <%= @user_subject.subject.description %>
+</p>
