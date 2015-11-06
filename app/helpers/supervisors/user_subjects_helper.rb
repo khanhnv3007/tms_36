@@ -1,0 +1,2 @@
+module Supervisors::UserSubjectsHelper
+end

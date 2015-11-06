@@ -5,10 +5,5 @@
 <hr/>
 <h2><%= t "instructions" %></h2>
 <p class="container-fluid">
-  <%= @course.description %>
+  <%= @user_course.course.description %>
 </p>
-<hr/>
-<h2><%= t "courses.trainee" %>: </h2>
-<% @course.users.each do |user| %>
-  <%= render user %>
-<% end %>
