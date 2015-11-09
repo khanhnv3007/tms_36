@@ -33,6 +33,7 @@ class Supervisors::UsersController < ApplicationController
   end
 
   def show
+    @user_courses = @user.user_courses
   end
 
   def edit

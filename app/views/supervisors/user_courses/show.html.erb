@@ -1,0 +1,9 @@
+<h2><%= t "layouts.header.subject" %> : </h2>
+<ul>
+  <%= render @user_subjects %>
+</ul>
+<hr/>
+<h2><%= t "instructions" %></h2>
+<p class="container-fluid">
+  <%= @user_course.course.description %>
+</p>

@@ -108,6 +108,7 @@ en:
     status: "Status: "
     finish: "Finish this subject!"
     finished: "finished!"
+    started: "Started!"
   courses:
     name: "Course Name"
     started: "Started"

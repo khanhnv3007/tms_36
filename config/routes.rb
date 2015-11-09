@@ -11,12 +11,15 @@ Rails.application.routes.draw do
 
   namespace :supervisors do
     root "dashboard#index"
-    resources :users
+    resources :users do
+      resources :user_courses
+    end
     resources :courses do
       resources :course_subjects
       resources :subjects, only: :show
       resources :user_courses
     end
     resources :subjects
+    resources :user_subjects
   end
 end
