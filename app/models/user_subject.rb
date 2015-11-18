@@ -15,13 +15,11 @@ class UserSubject < ActiveRecord::Base
   after_create :create_user_tasks
   after_update :log_activity, :update_user_tasks_status
 
-  private
   def finish_subject
-    if self.update_status :finished
-      user_tasks.each{|user_task| user_task.update_status :finished}
-    end
+    self.update_status :finished
   end
 
+  private
   def create_user_tasks
     if self.subject.started? && self.subject.tasks.present?
       self.subject.tasks.each do |task|
