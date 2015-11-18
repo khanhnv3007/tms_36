@@ -13,7 +13,7 @@ class Course < ActiveRecord::Base
   validates :description, presence: true, length: {maximum: 1000}
   validates :status, presence: true
 
-  after_save :update_subjects_status
+  after_update :update_subjects_status, :update_user_courses_status
 
   accepts_nested_attributes_for :user_courses, allow_destroy: true,
     reject_if: proc { |attributes| attributes['user_id'].blank? }
@@ -27,6 +27,12 @@ class Course < ActiveRecord::Base
         self.finished? ? course_subject.update_status(:finished) :
         course_subject.update_status(:started)
       end
+    end
+  end
+
+  def update_user_courses_status
+    if self.user_courses.present?
+      self.user_courses.each{|user_course| user_course.update_status self.status}
     end
   end
 end

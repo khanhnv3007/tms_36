@@ -1,6 +1,6 @@
-<tr class="<%= user_subject.subject.finished? ? "danger" : "success" %>">
+<tr class="<%= user_subject.finished? ? "danger" : "success" %>">
   <td>
-    <% if user_subject.subject.started? %>
+    <% if user_subject.started? %>
       <%= (link_to user_subject.subject.name,
         user_user_subject_path(current_user, user_subject)) %>
     <% else %>

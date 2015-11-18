@@ -54,6 +54,6 @@ class Supervisors::SubjectsController < ApplicationController
   def subject_params
     params.require(:subject).permit :name, :description, :status,
       :start_date, :end_date,
-      tasks_attributes: [:id, :name, :description, :status, :_destroy]
+      tasks_attributes: [:id, :name, :description, :_destroy]
   end
 end

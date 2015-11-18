@@ -9,7 +9,7 @@ class UserCourse < ActiveRecord::Base
 
   after_create :log_create, :create_user_subjects
   after_destroy :log_destroy
-  after_update :log_activity
+  after_update :log_activity, :update_user_subjects_status
 
   private
   def create_user_subjects
@@ -18,6 +18,12 @@ class UserCourse < ActiveRecord::Base
         self.user_subjects.create(user_id: self.user.id, subject_id: subject.id,
           status: :started)
       end
+    end
+  end
+
+  def update_user_subjects_status
+    if self.user_subjects.present?
+      self.user_subjects.each{|user_subject| user_subject.update_status self.status}
     end
   end
 

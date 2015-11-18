@@ -13,7 +13,7 @@ class UserSubject < ActiveRecord::Base
   has_many :user_tasks, dependent: :destroy
 
   after_create :create_user_tasks
-  after_update :log_activity
+  after_update :log_activity, :update_user_tasks_status
 
   private
   def finish_subject
@@ -28,6 +28,12 @@ class UserSubject < ActiveRecord::Base
         self.user_tasks.create(user_id: self.user.id, task_id: task.id,
           status: :started)
       end
+    end
+  end
+
+  def update_user_tasks_status
+    if self.user_tasks.present?
+      self.user_tasks.each{|user_task| user_task.update_status self.status}
     end
   end
 end

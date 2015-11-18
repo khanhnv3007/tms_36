@@ -5,11 +5,6 @@
   <%= f.label :description %>
   <%= f.text_area :description, class: "form-control" %>
 
-  <%= f.label :status, class: "pull-right" do %>
-    <%= f.check_box :status, {}, "finished", "started" %>
-    <%= t "buttons.finished" %>
-  <% end %>
-
   <%= f.hidden_field :_destroy %>
   <%= link_to t("buttons.remove_task"), "#", class: "remove_fields" %>
 </div>
